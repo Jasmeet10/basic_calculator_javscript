@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<script>
+    var calculatorIsOn = false;
+    var firstInput = true;
+    var clearScreen = "";
+    function insert(num){
+        if (calculatorIsOn === true) {
+            if (firstInput === true) {
+            clearButton() 
+            document.form.textview.value = document.form.textview.value+num;
+            firstInput = false;
+            }else{
+                document.form.textview.value = document.form.textview.value+num;
+            }
+        }
+    }
+    function clearButton() {
+        document.form.textview.value = clearScreen;
+    }
+    function equal(){
+        var val = document.form.textview.value;
+        if(val){
+            document.form.textview.value = eval(val);
+        }
+        
+    }
+    function clean(){
+        if (calculatorIsOn === true){
+            document.form.textview.value = "0.0";
+            firstInput = true;
+        }
+    }
+
+    function off(){
+        document.form.textview.value = clearScreen ;
+        calculatorIsOn = false;
+    }
+
+    function on(){
+        calculatorIsOn = true;
+        var reset = '0.0';
+        document.form.textview.value = reset;
+        firstInput = true;
+    }
+    </script>
+<style>
+    *{
+        margin: 0;
+        padding: 5;
+    }
+
+
+    .title{
+        width: 100%;
+        padding: 5;
+        margin: 5;
+        outline: 1px solid black;
+        text-align: center;
+    }
+    .button{
+        width: 40px;
+        height: 100;
+        font-size: 25;
+        margin: 2;
+        cursor: pointer;
+    }
+    .button2{
+        width: 25px;
+        height: 100;
+        font-size: 25;
+        cursor: pointer;
+    }
+    .textview{
+        width: 80%;
+        margin: 3;
+        font-size: 25;
+        padding: 3;
+        text-align: right;
+        
+    }
+    .main{
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        outline: 2px solid black;
+        border: 2px solid black;
+        outline: gray solid 3px;
+        padding: 5px;
+        text-align: center;
+    }
+    .smallBox{
+        outline: 1px solid black;
+        padding: 6px 0px;
+    }
+
+    table {
+        margin: 5px;
+    }
+
+    tr {
+        display: flex;
+        margin: 5px;
+    }
+
+    td{
+        flex: 1;
+    }
+
+    .operators{
+        margin-left: 10px;
+    }
+</style>
+<body>
+    <div class="box">
+    <div class="main">
+        <div class = title >My Calculator  </div>
+        <form name="form">
+            <div class = "smallBox">
+            <input class="textview" name="textview" disabled="disabled">
+        </div>
+        </form>
+        <table>
+            <tr>
+                <td><input class="button" type="button" value="on" onclick="on()"><td>
+                <td><input class="button" type="button" value="off" onclick="off()"><td>
+                <td><input class="button" type="button" value="0" onclick="insert(0)"><td> 
+                <td><input class="button" type="button"  value="1" onclick="insert(1)"><td> 
+            </tr>  
+            <tr>
+                <td><input class="button" type="button"  value="2" onclick="insert(2)"><td>
+                <td><input class="button" type="button"  value="3" onclick="insert(3)"><td>
+                <td><input class="button" type="button"  value="4" onclick="insert(4)"><td> 
+                <td><input class="button" type="button"  value="5" onclick="insert(5)"><td> 
+            </tr>  
+            <tr>
+                <td><input class="button" type="button"  value="6" onclick="insert(6)"><td>
+                <td><input class="button" type="button"  value="7" onclick="insert(7)"><td>
+                <td><input class="button" type="button"  value="8" onclick="insert(8)"><td> 
+                <td><input class="button" type="button"  value="9" onclick="insert(9)"><td> 
+            </tr>  
+            <tr class="operators">
+                <td><input class="button2" type="button"  value="." onclick="insert('.')"><td>
+                <td><input class="button2" type="button"  value="(" onclick="insert('(')"><td>
+                <td><input class="button2" type="button"  value=")" onclick="insert(')')"><td> 
+                <td><input class="button2" type="button"  value="+" onclick="insert('+')"><td> 
+                <td><input class="button2" type="button"  value="-" onclick="insert('-')"><td> 
+            </tr> 
+            <tr>
+                <td><input class="button" type="button"  value="*" onclick="insert('*')"><td>
+                <td><input class="button" type="button"  value="/" onclick="insert('/')"><td>
+                <td><input class="button" type="button"  value="=" onclick="equal()"><td> 
+                <td><input class="button" type="button"  value="clear" onclick="clean()"><td> 
+            </tr>   
+        </table>
+        
+    </div>
+</div>
+</body>
+</html>
